@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:open_my_network_app/app/widgets/custom_text_field.dart';
+import 'package:open_my_network_app/authentication/sign_up/screen/register_screen.dart';
 
 import '../bloc/sign_in_bloc.dart';
 
@@ -62,6 +64,25 @@ class LoginFormUI extends StatelessWidget {
               child: const Text(
                 "Login",
               ),
+            ),
+            const Gap(10 * 2),
+            RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                  text: "Do not have an account?",
+                  style: TextStyle(color: Colors.black),
+                ),
+                WidgetSpan(child: SizedBox(width: 5)),
+                TextSpan(
+                  text: "Register",
+                  style: TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+
+                  }
+                  ),
+              ]),
             ),
           ],
         ),
